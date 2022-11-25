@@ -28,8 +28,31 @@ final class RockPaperScissorsGame
         ],
     ];
 
+    private const WIN_MOVEMENTS = [
+        self::ROCK => self::SCISSORS,
+        self::SCISSORS => self::PAPER,
+        self::PAPER => self::ROCK,
+    ];
+
     public function play(string $playerOneMove, string $playerTwoMove): string
     {
-        return self::RULES[$playerOneMove][$playerTwoMove];
+        // Possibility one
+//        return self::RULES[$playerOneMove][$playerTwoMove];
+
+        // Possibility Two
+        if ($playerOneMove === $playerTwoMove) {
+            return 'Draw';
+        }
+
+        return $this->whoWins($playerOneMove, $playerTwoMove);
+    }
+
+    private function whoWins(string $playerOneMove, string $playerTwoMove): string
+    {
+        $winner = self::WIN_MOVEMENTS[$playerOneMove] === $playerTwoMove
+            ? ucfirst($playerOneMove)
+            : ucfirst($playerTwoMove);
+
+        return $winner . ' wins';
     }
 }

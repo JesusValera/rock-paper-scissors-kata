@@ -32,6 +32,8 @@ final class RockPaperScissorsGameTest extends TestCase
             'paper_lose_scissors' => [RockPaperScissorsGame::PAPER, RockPaperScissorsGame::SCISSORS, 'Scissors wins'],
             'paper_draw' => [RockPaperScissorsGame::PAPER, RockPaperScissorsGame::PAPER, 'Draw'],
             'scissors_beats_paper' => [RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::PAPER, 'Scissors wins'],
+            'scissors_lose_rock' => [RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::ROCK, 'Rock wins'],
+            'scissors_draw' => [RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::SCISSORS, 'Draw'],
         ];
     }
 }

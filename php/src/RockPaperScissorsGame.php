@@ -21,22 +21,15 @@ final class RockPaperScissorsGame
             self::ROCK => 'Paper wins',
             self::PAPER => 'Draw',
         ],
+        self::SCISSORS => [
+            self::PAPER => 'Scissors wins',
+            self::ROCK => 'Rock wins',
+            self::SCISSORS => 'Draw',
+        ],
     ];
 
     public function play(string $playerOneMove, string $playerTwoMove): string
     {
-        if ($playerOneMove === self::ROCK || $playerOneMove === self::PAPER) {
-            return self::RULES[$playerOneMove][$playerTwoMove];
-        }
-
-        if ($playerOneMove === $playerTwoMove) {
-            return 'Draw';
-        }
-
-        if ($playerOneMove === self::SCISSORS && $playerTwoMove === self::PAPER) {
-            return 'Scissors wins';
-        }
-
-        return 'Rock wins';
+        return self::RULES[$playerOneMove][$playerTwoMove];
     }
 }

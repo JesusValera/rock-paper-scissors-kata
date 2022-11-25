@@ -12,18 +12,18 @@ final class RockPaperScissorsGame
 
     private const RULES = [
         self::ROCK => [
-            self::SCISSORS => 'Rock wins',
-            self::PAPER => 'Paper wins',
             self::ROCK => 'Draw',
+            self::PAPER => 'Paper wins',
+            self::SCISSORS => 'Rock wins',
         ],
         self::PAPER => [
-            self::SCISSORS => 'Scissors wins',
             self::ROCK => 'Paper wins',
             self::PAPER => 'Draw',
+            self::SCISSORS => 'Scissors wins',
         ],
         self::SCISSORS => [
-            self::PAPER => 'Scissors wins',
             self::ROCK => 'Rock wins',
+            self::PAPER => 'Scissors wins',
             self::SCISSORS => 'Draw',
         ],
     ];

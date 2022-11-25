@@ -7,7 +7,7 @@ namespace KataTests;
 use Kata\RockPaperScissorsGame;
 use PHPUnit\Framework\TestCase;
 
-class RockPaperScissorsGameTest extends TestCase
+final class RockPaperScissorsGameTest extends TestCase
 {
     /** @test */
     public function rocks_beats_scissors(): void
@@ -37,5 +37,15 @@ class RockPaperScissorsGameTest extends TestCase
         $result = $game->play(RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::PAPER);
 
         self::assertSame('Scissors wins', $result);
+    }
+
+    /** @test */
+    public function same_movement_is_draw(): void
+    {
+        $game = new RockPaperScissorsGame();
+
+        $result = $game->play(RockPaperScissorsGame::ROCK, RockPaperScissorsGame::ROCK);
+
+        self::assertSame('Draw', $result);
     }
 }

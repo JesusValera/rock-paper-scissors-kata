@@ -12,6 +12,10 @@ final class RockPaperScissorsGame
 
     public function play(string $playerOneMove, string $playerTwoMove): string
     {
+        if ($playerOneMove === $playerTwoMove) {
+            return 'Draw';
+        }
+
         if ($playerOneMove === self::PAPER && $playerTwoMove === self::ROCK) {
             return 'Paper wins';
         }

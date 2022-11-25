@@ -37,9 +37,9 @@ final class RockPaperScissorsGame
     public function play(string $playerOneMove, string $playerTwoMove): string
     {
         // Possibility one
-//        return self::RULES[$playerOneMove][$playerTwoMove];
+        // return self::RULES[$playerOneMove][$playerTwoMove];
 
-        // Possibility Two
+        // Possibility two
         if ($playerOneMove === $playerTwoMove) {
             return 'Draw';
         }

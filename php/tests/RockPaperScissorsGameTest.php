@@ -10,8 +10,9 @@ use PHPUnit\Framework\TestCase;
 final class RockPaperScissorsGameTest extends TestCase
 {
     /**
-     * @test
      * @dataProvider gameMovementsProvider
+     *
+     * @test
      */
     public function game_movements(string $playerOneMove, string $playerTwoMove, string $expected): void
     {

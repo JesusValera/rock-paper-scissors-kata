@@ -24,6 +24,10 @@ final class RockPaperScissorsGame
             return 'Scissors wins';
         }
 
+        if ($playerOneMove === self::ROCK && $playerTwoMove === self::PAPER) {
+            return 'Paper wins';
+        }
+
         return 'Rock wins';
     }
 }

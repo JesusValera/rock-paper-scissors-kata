@@ -48,4 +48,14 @@ final class RockPaperScissorsGameTest extends TestCase
 
         self::assertSame('Draw', $result);
     }
+
+    /** @test */
+    public function rock_lose_paper(): void
+    {
+        $game = new RockPaperScissorsGame();
+
+        $result = $game->play(RockPaperScissorsGame::ROCK, RockPaperScissorsGame::PAPER);
+
+        self::assertSame('Paper wins', $result);
+    }
 }

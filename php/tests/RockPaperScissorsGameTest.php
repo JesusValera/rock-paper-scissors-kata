@@ -9,53 +9,27 @@ use PHPUnit\Framework\TestCase;
 
 final class RockPaperScissorsGameTest extends TestCase
 {
-    /** @test */
-    public function rocks_beats_scissors(): void
+    /**
+     * @test
+     * @dataProvider gameMovementsProvider
+     */
+    public function game_movements(string $playerOneMove, string $playerTwoMove, string $expected): void
     {
         $game = new RockPaperScissorsGame();
 
-        $result = $game->play(RockPaperScissorsGame::ROCK, RockPaperScissorsGame::SCISSORS);
+        $result = $game->play($playerOneMove, $playerTwoMove);
 
-        self::assertSame('Rock wins', $result);
+        self::assertSame($expected, $result);
     }
 
-    /** @test */
-    public function paper_beats_rocks(): void
+    public function gameMovementsProvider(): array
     {
-        $game = new RockPaperScissorsGame();
-
-        $result = $game->play(RockPaperScissorsGame::PAPER, RockPaperScissorsGame::ROCK);
-
-        self::assertSame('Paper wins', $result);
-    }
-
-    /** @test */
-    public function scissors_beats_paper(): void
-    {
-        $game = new RockPaperScissorsGame();
-
-        $result = $game->play(RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::PAPER);
-
-        self::assertSame('Scissors wins', $result);
-    }
-
-    /** @test */
-    public function same_movement_is_draw(): void
-    {
-        $game = new RockPaperScissorsGame();
-
-        $result = $game->play(RockPaperScissorsGame::ROCK, RockPaperScissorsGame::ROCK);
-
-        self::assertSame('Draw', $result);
-    }
-
-    /** @test */
-    public function rock_lose_paper(): void
-    {
-        $game = new RockPaperScissorsGame();
-
-        $result = $game->play(RockPaperScissorsGame::ROCK, RockPaperScissorsGame::PAPER);
-
-        self::assertSame('Paper wins', $result);
+        return [
+            'rocks_beats_scissors' => [RockPaperScissorsGame::ROCK, RockPaperScissorsGame::SCISSORS, 'Rock wins'],
+            'rock_lose_paper ' => [RockPaperScissorsGame::ROCK, RockPaperScissorsGame::PAPER, 'Paper wins'],
+            'rock_draw' => [RockPaperScissorsGame::ROCK, RockPaperScissorsGame::ROCK, 'Draw'],
+            'paper_beats_rocks' => [RockPaperScissorsGame::PAPER, RockPaperScissorsGame::ROCK, 'Paper wins'],
+            'scissors_beats_paper' => [RockPaperScissorsGame::SCISSORS, RockPaperScissorsGame::PAPER, 'Scissors wins'],
+        ];
     }
 }

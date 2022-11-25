@@ -9,9 +9,21 @@ final class RockPaperScissorsGame
     public const PAPER = 'paper';
     public const ROCK = 'rock';
     public const SCISSORS = 'scissors';
+    private const RULES =
+        [
+            self::ROCK => [
+                self::SCISSORS => 'Rock wins',
+                self::PAPER => 'Paper wins',
+                self::ROCK => 'Draw',
+            ],
+        ];
 
     public function play(string $playerOneMove, string $playerTwoMove): string
     {
+        if ($playerOneMove === self::ROCK) {
+            return self::RULES[$playerOneMove][$playerTwoMove];
+        }
+
         if ($playerOneMove === $playerTwoMove) {
             return 'Draw';
         }
@@ -22,10 +34,6 @@ final class RockPaperScissorsGame
 
         if ($playerOneMove === self::SCISSORS && $playerTwoMove === self::PAPER) {
             return 'Scissors wins';
-        }
-
-        if ($playerOneMove === self::ROCK && $playerTwoMove === self::PAPER) {
-            return 'Paper wins';
         }
 
         return 'Rock wins';
